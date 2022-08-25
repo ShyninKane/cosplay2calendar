@@ -7,21 +7,21 @@
     <mat-form-field appearance="fill">
       <mat-label>Тип</mat-label>
       <mat-select [formControl]="toppings" multiple>
-        <mat-option *ngFor="let topping of toppingList" [value]="topping">{{ topping }}</mat-option>
+        <mat-option *ngFor="let option of data.typeOptions" [value]="option">{{ option }}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Город</mat-label>
       <mat-select [formControl]="toppings" multiple>
-        <mat-option *ngFor="let topping of toppingList" [value]="topping">{{ topping }}</mat-option>
+        <mat-option *ngFor="let option of data.cityOptions" [value]="option">{{ option }}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Год</mat-label>
       <mat-select [formControl]="toppings" multiple>
-        <mat-option *ngFor="let topping of toppingList" [value]="topping">{{ topping }}</mat-option>
+        <mat-option *ngFor="let option of data.yearOptions" [value]="option">{{ option }}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>

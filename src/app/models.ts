@@ -30,3 +30,10 @@ export enum DurationIcon {
   looks_5 = 5,
   looks_6 = 6,
 }
+
+export interface ICalendarState {
+  events: IEventDTO[];
+  typeOptions: string[];
+  cityOptions: string[];
+  yearOptions: string[];
+}

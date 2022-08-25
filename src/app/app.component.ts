@@ -3,7 +3,12 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AppService } from 'src/app/app.service';
-import { DurationIcon, EventType, IEventDTO } from 'src/app/models';
+import {
+  DurationIcon,
+  EventType,
+  ICalendarState,
+  IEventDTO,
+} from 'src/app/models';
 
 @Component({
   selector: 'app-root',
@@ -33,11 +38,7 @@ export class AppComponent {
     'Tomato',
   ];
 
-  data$: Observable<any[]> = this.appService.loadData().pipe(
-    tap((res) => {
-      res;
-    })
-  );
+  data$: Observable<ICalendarState> = this.appService.loadData();
 
   constructor(private appService: AppService) {}
 

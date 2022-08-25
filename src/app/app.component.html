@@ -1,0 +1,104 @@
+<div style="padding: 10px">
+  <h1>
+    {{ title }}
+  </h1>
+
+  <div class="filters">
+    <mat-form-field appearance="fill">
+      <mat-label>Тип</mat-label>
+      <mat-select [formControl]="toppings" multiple>
+        <mat-option *ngFor="let topping of toppingList" [value]="topping">{{ topping }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Город</mat-label>
+      <mat-select [formControl]="toppings" multiple>
+        <mat-option *ngFor="let topping of toppingList" [value]="topping">{{ topping }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Год</mat-label>
+      <mat-select [formControl]="toppings" multiple>
+        <mat-option *ngFor="let topping of toppingList" [value]="topping">{{ topping }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="data$">
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Статус</th>
+      <td mat-cell *matCellDef="let item">
+        <div class="center">
+          <ng-container *ngIf="item.timestatus === 'past'; else upcomingIcon">
+            <mat-icon class="passed-icon">access_time</mat-icon>
+          </ng-container>
+          <ng-template #upcomingIcon><mat-icon class="upcoming-icon">done_outline</mat-icon></ng-template>
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Тип</th>
+      <td mat-cell *matCellDef="let item">
+        {{ getEventType(item.event_type_id) }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="start">
+      <th mat-header-cell *matHeaderCellDef>Дата</th>
+      <td mat-cell *matCellDef="let item">{{ item.start_time | date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef>Продолжительность</th>
+      <td mat-cell *matCellDef="let item">
+        <div class="center duration-data">
+          <mat-icon [ngClass]="getDuration(item) > 1 ? 'multiple-days-icon' : 'single-day-icon'">{{
+            getDurationIcon(item)
+          }}</mat-icon>
+          <div *ngIf="getDuration(item) > 1">до {{ item.end_time | date }}</div>
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Название</th>
+      <td mat-cell *matCellDef="let item">
+        <div class="align-items-center">
+          <div class="title-data">
+            <span>
+              {{ item.title }}
+            </span>
+            <a [href]="item.href" target="_blank" *ngIf="item.href">
+              <mat-icon class="open-link-icon">open_in_new</mat-icon>
+            </a>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef>Город</th>
+      <td mat-cell *matCellDef="let item">{{ item.city }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>
+        <button mat-raised-button color="warn" class="add-to-calendar">
+          Добавить все в календарь <mat-icon>open_in_browser</mat-icon>
+        </button>
+      </th>
+      <td mat-cell *matCellDef="let item">
+        <!-- <button mat-flat-button color="primary"><mat-icon>add_box</mat-icon></button> -->
+        <button mat-raised-button color="warn" class="add-to-calendar">
+          Добавить в календарь <mat-icon>open_in_browser</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

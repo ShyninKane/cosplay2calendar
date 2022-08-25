@@ -1,0 +1,87 @@
+.passed-icon {
+  color: rgba(255, 0, 0, 0.8);
+}
+
+.upcoming-icon,
+.single-day-icon {
+  color: rgba(0, 255, 0, 0.5);
+}
+
+.multiple-days-icon {
+  color: rgb(255, 210, 0);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+td,
+th {
+  padding: 10px !important;
+  text-align: center !important;
+}
+
+tr {
+  background-color: rgb(72, 72, 72) !important;
+}
+
+table {
+  box-shadow: 0 5px 5px -3px #0003, 0 8px 10px 1px #00000024,
+    0 3px 14px 2px #0000001f;
+}
+
+.title-data {
+  display: flex;
+  align-items: center;
+  > *:not(:last-child) {
+    padding-right: 5px;
+  }
+}
+
+.duration-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a {
+  color: inherit;
+}
+
+.open-link-icon {
+  width: 16px;
+  height: 16px;
+  font-size: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  font-family: monospace;
+}
+
+:host {
+  padding: 10px;
+}
+
+.add-to-calendar {
+  background-color: rgb(54, 127, 223) !important;
+}
+
+table.mat-table {
+  //   table-layout: fixed;
+  width: 100%;
+  display: table;
+}
+
+.filters {
+  > *:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
+.align-items-center {
+  display: flex;
+  justify-content: center;
+}

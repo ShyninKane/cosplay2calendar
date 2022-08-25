@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { AppService } from 'src/app/app.service';
 import { DurationIcon, EventType, IEventDTO } from 'src/app/models';
 
@@ -10,6 +11,8 @@ import { DurationIcon, EventType, IEventDTO } from 'src/app/models';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  title = 'Cosplay2Calendar';
+
   displayedColumns: string[] = [
     'status',
     'type',
@@ -30,9 +33,11 @@ export class AppComponent {
     'Tomato',
   ];
 
-  title = 'Cosplay2Calendar';
-
-  data$: Observable<any[]> = this.appService.loadData();
+  data$: Observable<any[]> = this.appService.loadData().pipe(
+    tap((res) => {
+      res;
+    })
+  );
 
   constructor(private appService: AppService) {}
 

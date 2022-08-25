@@ -13,6 +13,6 @@ export class AppService {
   constructor(private http: HttpClient) {}
 
   loadData(): Observable<IEventDTO[]> {
-    return this.http.post<any>(this.api, {}).pipe(map((res) => res.events));
+    return this.http.post<any>(this.api, {}).pipe(map((res) => res));
   }
 }

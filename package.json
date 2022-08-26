@@ -3,18 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "eslint -c .eslintrc.js --ext .ts src",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run cosplay2calendar:serve-ssr",
-    "serve:ssr": "node dist-server/main.js",
-    "prerender": "ng run cosplay2calendar:prerender",
-    "analyze": "npm run build:stats && npm run analyze:bundle",
-    "build:stats": "ng build --stats-json",
-    "analyze:bundle": "webpack-bundle-analyzer ./dist/stats.json",
-    "analyze:new": "bundle-stats ./dist/stats.json"
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -64,5 +58,9 @@
     "tslint": "~6.1.0",
     "bundle-stats": "^3.0.1",
     "webpack-bundle-analyzer": "^4.4.2"
+  },
+  "engines": {
+    "node": "^14.17.0",
+    "npm": "^6.14.13"
   }
 }

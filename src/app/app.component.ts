@@ -1,4 +1,4 @@
-import { Component, Directive as  } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -10,8 +10,6 @@ import {
   IEventDTO,
 } from 'src/app/models';
 
-@()
-@Directive()
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

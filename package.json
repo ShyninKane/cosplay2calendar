@@ -19,7 +19,7 @@
   "private": true,
   "dependencies": {
     "@angular-devkit/build-angular": "^12.2.18",
-    "@angular-devkit/schematics": "^14.2.0",
+    "@angular-devkit/schematics": "^12.0.0",
     "@angular/animations": "~12.2.16",
     "@angular/cdk": "^11.2.13",
     "@angular/cli": "^12.2.18",

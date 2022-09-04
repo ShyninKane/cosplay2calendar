@@ -3,6 +3,21 @@
     {{ title }}
   </h1>
 
+  <div class="mapouter" *ngIf="mapSrc" style="margin: 20px">
+    <div class="gmap_canvas">
+      <iframe
+        width="600"
+        height="450"
+        id="gmap_canvas"
+        [src]="mapSrc"
+        frameborder="0"
+        scrolling="no"
+        marginheight="0"
+        marginwidth="0"
+      ></iframe>
+    </div>
+  </div>
+
   <div class="filters">
     <mat-form-field appearance="fill">
       <mat-label>Тип</mat-label>
@@ -81,7 +96,18 @@
 
     <ng-container matColumnDef="city">
       <th mat-header-cell *matHeaderCellDef>Город</th>
-      <td mat-cell *matCellDef="let item">{{ item.city }}</td>
+      <td mat-cell *matCellDef="let item">
+        <div class="align-items-center">
+          <div class="title-data">
+            <span>
+              {{ item.city }}
+            </span>
+            <mat-icon [ngClass]="iconItem.class" *ngIf="getCityIconItem(item.city) as iconItem">{{
+              iconItem.title
+            }}</mat-icon>
+          </div>
+        </div>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="actions">
@@ -91,7 +117,6 @@
         </button>
       </th>
       <td mat-cell *matCellDef="let item">
-        <!-- <button mat-flat-button color="primary"><mat-icon>add_box</mat-icon></button> -->
         <button mat-raised-button color="warn" class="add-to-calendar">
           Добавить в календарь <mat-icon>open_in_browser</mat-icon>
         </button>
@@ -102,3 +127,8 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 </div>
+
+<!-- <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+  defer
+></script> -->

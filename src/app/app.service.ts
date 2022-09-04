@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { EventType, ICalendarState, IEventDTO } from 'src/app/models';
 import { catchError, map, skip } from 'rxjs/operators';
 
@@ -25,12 +25,12 @@ export class AppService {
 
         const yearOptions = [];
         const currentYear = new Date().getFullYear();
-        for (let i = 2; i > 0; i--) {
-          yearOptions.push(currentYear - i);
+        for (let i = 1; i <= 1; i++) {
+          yearOptions.push(currentYear + i);
         }
         yearOptions.push(currentYear);
-        for (let i = 1; i <= 2; i++) {
-          yearOptions.push(currentYear + i);
+        for (let i = 1; i <= 5; i++) {
+          yearOptions.push(currentYear - i);
         }
 
         return {
